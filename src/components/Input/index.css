@@ -1,0 +1,15 @@
+input {
+  margin-top: .5rem;
+  width: 220px;
+  line-height: 1rem;
+  padding: 5px 10px;
+  font-size: .875rem;
+  border-radius: 2px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+input:focus {
+  box-shadow: 0 0 1px 1px #B5E096;
+  border: 1px solid #B5E096;
+}
