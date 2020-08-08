@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormItem renders correctly renders correctly with input 1`] = `
+<div
+  className="form-item"
+>
+  <label
+    className="form-item__label"
+  >
+    Label:
+    <input
+      className="input"
+      name="input"
+      onBlur={[Function]}
+      onChange={[Function]}
+      placeholder={null}
+      required={false}
+      type="text"
+      value="sunshine"
+    />
+  </label>
+</div>
+`;

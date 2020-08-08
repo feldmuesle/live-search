@@ -1,33 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Input renders correctly renders correctly with given value 1`] = `
-<div
-  className="form__group"
->
-  <input
-    name="input"
-    onBlur={[Function]}
-    onChange={[Function]}
-    placeholder={null}
-    required={false}
-    type="text"
-    value="sunshine"
-  />
-</div>
+<input
+  className="input"
+  name="input"
+  onBlur={[Function]}
+  onChange={[Function]}
+  placeholder={null}
+  required={false}
+  type="text"
+  value="sunshine"
+/>
 `;
 
 exports[`Input renders correctly renders disabled input 1`] = `
-<div
-  className="form__group"
->
-  <input
-    name="input"
-    onBlur={[Function]}
-    onChange={[Function]}
-    placeholder={null}
-    required={false}
-    type="text"
-    value="sunshine"
-  />
-</div>
+<input
+  className="input"
+  name="input"
+  onBlur={[Function]}
+  onChange={[Function]}
+  placeholder={null}
+  required={false}
+  type="text"
+  value="sunshine"
+/>
 `;

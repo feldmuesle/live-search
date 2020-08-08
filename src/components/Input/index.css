@@ -1,15 +1,12 @@
-input {
-  margin-top: .5rem;
-  width: 220px;
-  line-height: 1rem;
-  padding: 5px 10px;
-  font-size: .875rem;
+.input {
+  width: 100%;
+  padding: 0.6rem;
   border-radius: 2px;
-  border: 1px solid #ccc;
-  outline: none;
+  border: 1px solid #a8a8a8;
+  font-size: 0.9rem;
 }
 
-input:focus {
+.input:focus {
   box-shadow: 0 0 1px 1px #B5E096;
   border: 1px solid #B5E096;
 }
