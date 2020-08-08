@@ -10,6 +10,7 @@ function SearchInput({
   className,
   data,
   isOpen,
+  toggleDropdown,
   search,
   displayAll,
   selectResult,
@@ -45,7 +46,13 @@ function SearchInput({
   return (
     <div className={classNames}>
       <FormItem label="Manager">
-        <Input placeholder="Choose Manager" name="managers" onChange={search} />
+        <Input
+          placeholder="Choose Manager"
+          name="managers"
+          onChange={search}
+          onFocus={toggleDropdown}
+          onBlur={toggleDropdown}
+        />
       </FormItem>
       {isOpen && createDropdown()}
     </div>
@@ -63,6 +70,7 @@ SearchInput.propTypes = {
     PropTypes.objectOf(PropTypes.string, PropTypes.object, PropTypes.array)
   ).isRequired,
   isOpen: PropTypes.bool,
+  toggleDropdown: PropTypes.func.isRequired,
   search: PropTypes.func.isRequired,
   displayAll: PropTypes.func.isRequired,
   selectResult: PropTypes.func.isRequired,

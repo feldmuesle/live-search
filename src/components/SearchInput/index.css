@@ -1,6 +1,31 @@
 .search-input {
   margin: 0 auto;
-  max-width: 500px;
+  max-width: 400px;
   background-color: #eee;
   padding-bottom: 15px;
+}
+
+
+
+.search-input__dropdown {
+  max-width: 400px;
+  margin: .5rem 1rem;
+  background-color: #fff;
+  border-radius: 3px;
+}
+
+.search-input__results {
+  padding-inline-start: unset;
+  margin: 0 20px;
+}
+
+.search-input__result-item {
+  display: flex;
+  justify-content: flex-start;
+  padding: 20px 10px;
+
+}
+
+.search-input__result-item:not(:last-child) {
+  border-bottom: 1px solid #eee;
 }
