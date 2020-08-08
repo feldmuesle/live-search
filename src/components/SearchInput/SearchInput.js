@@ -9,32 +9,29 @@ import './index.css';
 function SearchInput({
   className,
   data,
+  value,
   isOpen,
   toggleDropdown,
   search,
-  displayAll,
   selectResult,
   resultComponent,
 }) {
-  const classNames = className ? `search-input ${className}` : 'search-input';
-
   const ResultComponent = resultComponent;
+  const classNames = className ? `search-input ${className}` : 'search-input';
 
   function createDropdown() {
     return (
       <div className="search-input__dropdown">
         <ul className="search-input__results">
-          {data.map((manager) => {
-            const { firstName, lastName, email, id } = manager;
-
+          {data.map((item) => {
             return (
-              <li className="search-input__result-item">
-                <ResultComponent
-                  firstname={firstName}
-                  lastname={lastName}
-                  email={email}
-                  id={id}
-                />
+              <li
+                className="search-input__result-item"
+                onClick={selectResult}
+                data-id={item.id}
+                key={item.id}
+              >
+                <ResultComponent {...item} />
               </li>
             );
           })}
@@ -47,11 +44,12 @@ function SearchInput({
     <div className={classNames}>
       <FormItem label="Manager">
         <Input
+          value={value}
           placeholder="Choose Manager"
           name="managers"
           onChange={search}
           onFocus={toggleDropdown}
-          onBlur={toggleDropdown}
+          onBlur={null}
         />
       </FormItem>
       {isOpen && createDropdown()}
@@ -69,10 +67,10 @@ SearchInput.propTypes = {
   data: PropTypes.arrayOf(
     PropTypes.objectOf(PropTypes.string, PropTypes.object, PropTypes.array)
   ).isRequired,
+  value: PropTypes.string.isRequired,
   isOpen: PropTypes.bool,
   toggleDropdown: PropTypes.func.isRequired,
   search: PropTypes.func.isRequired,
-  displayAll: PropTypes.func.isRequired,
   selectResult: PropTypes.func.isRequired,
   resultComponent: PropTypes.node.isRequired,
 };

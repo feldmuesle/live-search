@@ -8,10 +8,16 @@ import './templates/manager.css';
 
 function SearchInputContainer({ data, getResult }) {
   const [isOpen, setIsOpen] = useState(false);
+  const [value, setValue] = useState('');
+  const [result, setResult] = useState(data);
 
-  const displayAll = () => {};
+  const search = (ev) => {
+    const searchTerm = ev.target.value;
+    const searchResult = getResult(data, searchTerm);
 
-  const search = () => {};
+    setValue(searchTerm);
+    setResult(searchResult);
+  };
 
   const selectResult = () => {};
 
@@ -21,10 +27,10 @@ function SearchInputContainer({ data, getResult }) {
 
   return (
     <SearchInput
-      data={data}
+      data={result}
+      value={value}
       isOpen={isOpen}
       toggleDropdown={toggleDropdown}
-      displayAll={displayAll}
       search={search}
       selectResult={selectResult}
       resultComponent={ManagerResult}
