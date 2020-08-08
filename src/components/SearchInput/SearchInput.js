@@ -23,7 +23,20 @@ function SearchInput({
     return (
       <div className="search-input__dropdown">
         <ul className="search-input__results">
-          <ResultComponent data={data} selectResult={selectResult} />
+          {data.map((manager) => {
+            const { firstName, lastName, email, id } = manager;
+
+            return (
+              <li className="search-input__result-item">
+                <ResultComponent
+                  firstname={firstName}
+                  lastname={lastName}
+                  email={email}
+                  id={id}
+                />
+              </li>
+            );
+          })}
         </ul>
       </div>
     );

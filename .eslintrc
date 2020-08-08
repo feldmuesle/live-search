@@ -17,6 +17,7 @@
     "no-else-after-return": 0,
     "react/no-array-index-key": 1,
     "react/jsx-props-no-spreading": 0,
+    "react/jsx-fragments": [1, "element"],
     "padding-line-between-statements": ["error", {"blankLine": "always", "prev": "*", "next": "return"}]
 
   }

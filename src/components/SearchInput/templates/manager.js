@@ -2,9 +2,18 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Initials } from '../../Initials';
 
 function ManagerResult({ firstname, lastname, email }) {
-  return <div>manager list item to come</div>;
+  return (
+    <React.Fragment>
+      <Initials firstname={firstname} lastname={lastname} />
+      <div className="manager-details">
+        <div className="manager-detail--name">{`${firstname} ${lastname}`}</div>
+        <div className="manager-detail--email">{email}</div>
+      </div>
+    </React.Fragment>
+  );
 }
 
 ManagerResult.propTypes = {

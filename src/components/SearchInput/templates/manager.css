@@ -1,0 +1,15 @@
+.manager-details {
+  margin-left: 20px;
+}
+
+.manager-detail--name {
+  color: #666;
+  font-size: .875rem;
+  margin-bottom: 3px;
+}
+
+.manager-detail--email {
+  color: #a8a8a8;
+  font-size: .75rem;
+
+}
