@@ -1,18 +1,17 @@
 import React from 'react';
 import setupIcons from './setup-icons';
-import getData from './api/get-data';
+import getManagers from './api/get-managers';
 import { SearchInput } from './components/SearchInput';
 import './App.css';
 
 setupIcons();
 
-const managers = getData().data;
-console.log('managers', managers);
+const managers = getManagers();
 
 function App() {
   return (
     <div className="app">
-      <SearchInput data={managers} />
+      <SearchInput data={managers} getResult={() => {}} />
     </div>
   );
 }
