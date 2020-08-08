@@ -3,8 +3,16 @@ import PropTypes from 'prop-types';
 
 import './index.css';
 
-function Input({ type, name, onChange, onBlur, value, placeholder, className, isRequired }) {
-
+function Input({
+  type,
+  name,
+  onChange,
+  onBlur,
+  value,
+  placeholder,
+  className,
+  isRequired,
+}) {
   const classNames = className ? `input ${className}` : 'input';
 
   return (
