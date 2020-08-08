@@ -1,0 +1,10 @@
+.initials {
+  padding: 5px;
+  height: 30px;
+  width: 30px;
+  background-color: #94ddd4;
+  color: #fff;
+  border-radius: 3px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
