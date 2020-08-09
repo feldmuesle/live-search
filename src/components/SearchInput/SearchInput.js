@@ -16,7 +16,7 @@ function SearchInput({
   handleBlur,
   search,
   node,
-  selectResult,
+  handleSelect,
   resultComponent,
 }) {
   const ResultComponent = resultComponent;
@@ -32,7 +32,7 @@ function SearchInput({
             return (
               <li
                 className="search-input__result-item"
-                onClick={(ev) => selectResult(item)}
+                onClick={(ev) => handleSelect(item)}
                 key={id}
               >
                 <ResultComponent {...item} />
@@ -86,8 +86,8 @@ SearchInput.propTypes = {
   handleFocus: PropTypes.func.isRequired,
   handleBlur: PropTypes.func.isRequired,
   search: PropTypes.func.isRequired,
-  selectResult: PropTypes.func.isRequired,
-  resultComponent: PropTypes.node.isRequired,
+  handleSelect: PropTypes.func.isRequired,
+  resultComponent: PropTypes.func.isRequired,
 };
 
 export default SearchInput;

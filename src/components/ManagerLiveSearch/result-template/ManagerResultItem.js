@@ -3,8 +3,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Initials } from '../../Initials';
+import './index.css';
 
-function ManagerResult({ firstName, lastName, email }) {
+function ManagerResultItem({ firstName, lastName, email }) {
   return (
     <React.Fragment>
       <Initials firstname={firstName} lastname={lastName} />
@@ -16,10 +17,10 @@ function ManagerResult({ firstName, lastName, email }) {
   );
 }
 
-ManagerResult.propTypes = {
+ManagerResultItem.propTypes = {
   firstName: PropTypes.string.isRequired,
   lastName: PropTypes.string.isRequired,
   email: PropTypes.string.isRequired,
 };
 
-export default ManagerResult;
+export default ManagerResultItem;

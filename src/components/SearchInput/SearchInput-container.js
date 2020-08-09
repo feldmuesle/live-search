@@ -3,10 +3,8 @@
 import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import SearchInput from './SearchInput';
-import ManagerResult from './templates/manager';
-import './templates/manager.css';
 
-function SearchInputContainer({ data, getResult }) {
+function SearchInputContainer({ data, getResult, formatSelection, resultComponent }) {
   const [isOpen, setIsOpen] = useState(false);
   const [value, setValue] = useState('');
   const [result, setResult] = useState(data);
@@ -20,11 +18,8 @@ function SearchInputContainer({ data, getResult }) {
     setResult(searchResult);
   };
 
-  const selectResult = (item) => {
-    const { firstName, lastName } = item;
-    const fullName = `${firstName} ${lastName}`;
-
-    setValue(fullName);
+  const handleSelect = (item) => {
+    setValue(formatSelection(item));
     toggleDropdown();
   };
 
@@ -50,7 +45,7 @@ function SearchInputContainer({ data, getResult }) {
     return () => {
       document.removeEventListener('mousedown', handleBlur);
     };
-  }, [value]);
+  });
 
   function toggleDropdown() {
     setIsOpen(!isOpen);
@@ -65,8 +60,8 @@ function SearchInputContainer({ data, getResult }) {
       handleFocus={handleFocus}
       handleBlur={handleBlur}
       search={search}
-      selectResult={selectResult}
-      resultComponent={ManagerResult}
+      handleSelect={handleSelect}
+      resultComponent={resultComponent}
       node={node}
     />
   );
