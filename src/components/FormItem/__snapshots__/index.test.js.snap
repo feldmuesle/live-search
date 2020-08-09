@@ -9,10 +9,12 @@ exports[`FormItem renders correctly renders correctly with input 1`] = `
   >
     Label:
     <input
+      autoComplete="true"
       className="input"
       name="input"
       onBlur={[Function]}
       onChange={[Function]}
+      onFocus={null}
       placeholder={null}
       required={false}
       type="text"

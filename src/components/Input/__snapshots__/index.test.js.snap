@@ -2,10 +2,12 @@
 
 exports[`Input renders correctly renders correctly with given value 1`] = `
 <input
+  autoComplete="true"
   className="input"
   name="input"
   onBlur={[Function]}
   onChange={[Function]}
+  onFocus={null}
   placeholder={null}
   required={false}
   type="text"
@@ -15,10 +17,12 @@ exports[`Input renders correctly renders correctly with given value 1`] = `
 
 exports[`Input renders correctly renders disabled input 1`] = `
 <input
+  autoComplete="true"
   className="input"
   name="input"
   onBlur={[Function]}
   onChange={[Function]}
+  onFocus={null}
   placeholder={null}
   required={false}
   type="text"
