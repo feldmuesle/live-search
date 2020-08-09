@@ -14,7 +14,7 @@ function SearchInput({
   isOpen,
   handleFocus,
   handleBlur,
-  search,
+  handleChange,
   node,
   handleSelect,
   resultComponent,
@@ -24,7 +24,7 @@ function SearchInput({
 
   function createDropdown() {
     return (
-      <div className="search-input__dropdown">
+      <div className="search-input__dropdown" ref={node}>
         <ul className="search-input__results">
           {data.map((item) => {
             const { id } = item;
@@ -32,7 +32,7 @@ function SearchInput({
             return (
               <li
                 className="search-input__result-item"
-                onClick={(ev) => handleSelect(item)}
+                onMouseDown={() => handleSelect(item)}
                 key={id}
               >
                 <ResultComponent {...item} />
@@ -53,14 +53,14 @@ function SearchInput({
   }
 
   return (
-    <div className={classNames} ref={node}>
+    <div className={classNames}>
       <FormItem label="Manager">
         <Input
           autoComplete="new-password"
           value={value}
           placeholder="Choose Manager"
           name="managers"
-          onChange={search}
+          onChange={handleChange}
           onFocus={handleFocus}
           onBlur={handleBlur}
         />
@@ -85,7 +85,11 @@ SearchInput.propTypes = {
   isOpen: PropTypes.bool,
   handleFocus: PropTypes.func.isRequired,
   handleBlur: PropTypes.func.isRequired,
-  search: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  node: PropTypes.oneOfType([
+    PropTypes.func,
+    PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
+  ]).isRequired,
   handleSelect: PropTypes.func.isRequired,
   resultComponent: PropTypes.func.isRequired,
 };

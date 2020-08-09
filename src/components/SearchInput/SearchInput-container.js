@@ -10,12 +10,13 @@ function SearchInputContainer({ data, getResult, formatSelection, resultComponen
   const [result, setResult] = useState(data);
   const node = useRef();
 
-  const search = (ev) => {
+  const handleChange = (ev) => {
     const searchTerm = ev.target.value;
-    const searchResult = getResult(data, searchTerm);
-
     setValue(searchTerm);
-    setResult(searchResult);
+
+    if (!isOpen && result.length) {
+      setIsOpen(true);
+    }
   };
 
   const handleSelect = (item) => {
@@ -26,26 +27,42 @@ function SearchInputContainer({ data, getResult, formatSelection, resultComponen
   const handleFocus = (ev) => {
     // hush Chromes autosuggest feature
     ev.target.setAttribute('autocomplete', 'off');
-    toggleDropdown();
+    if (!isOpen) {
+      toggleDropdown();
+    }
   };
 
   const handleBlur = (ev) => {
     ev.stopPropagation();
 
-    if (isOpen && !node.current.contains(ev.target)) {
+    if (isOpen) {
       toggleDropdown();
-
-      return null;
     }
   };
 
   useEffect(() => {
-    document.addEventListener('mousedown', handleBlur);
+    const currentResult = getResult(data, value);
+    setResult(currentResult);
+  }, [value]);
 
+  useEffect(() => {
+    if (!node?.current) return;
+
+    function handleClickOutside(ev) {
+      ev.stopPropagation();
+      if (!node?.current) return;
+      if (isOpen && !node.current.contains(ev.target)) {
+        setIsOpen(false);
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    // eslint-disable-next-line consistent-return
     return () => {
-      document.removeEventListener('mousedown', handleBlur);
+      return document.removeEventListener('mousedown', handleClickOutside);
     };
-  });
+  }, [isOpen, setIsOpen]);
 
   function toggleDropdown() {
     setIsOpen(!isOpen);
@@ -59,7 +76,7 @@ function SearchInputContainer({ data, getResult, formatSelection, resultComponen
       toggleDropdown={toggleDropdown}
       handleFocus={handleFocus}
       handleBlur={handleBlur}
-      search={search}
+      handleChange={handleChange}
       handleSelect={handleSelect}
       resultComponent={resultComponent}
       node={node}
@@ -72,6 +89,8 @@ SearchInputContainer.defaultProps = {};
 SearchInputContainer.propTypes = {
   data: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
   getResult: PropTypes.func.isRequired,
+  formatSelection: PropTypes.func.isRequired,
+  resultComponent: PropTypes.func.isRequired,
 };
 
 export default SearchInputContainer;

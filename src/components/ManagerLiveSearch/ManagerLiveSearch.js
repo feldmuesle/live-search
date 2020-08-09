@@ -45,7 +45,7 @@ function ManagerLiveSearch() {
     const searchTerm = value.replace(/\s+/g, '');
 
     // let user type at least two characters before searching
-    if (searchTerm.length >= 2) {
+    if (searchTerm.length >= 1) {
       const regex = new RegExp(`${searchTerm}`, 'i');
 
       return data.filter(({ firstName, lastName }) => {
@@ -60,7 +60,7 @@ function ManagerLiveSearch() {
 
   const formatSelection = ({ firstName, lastName }) => {
     return `${firstName} ${lastName}`;
-  }
+  };
 
   if (managers.length) {
     return (
