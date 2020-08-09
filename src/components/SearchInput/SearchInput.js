@@ -2,6 +2,7 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { FormItem } from '../FormItem';
 import { Input } from '../Input';
 import './index.css';
@@ -43,6 +44,14 @@ function SearchInput({
     );
   }
 
+  function getIcon() {
+    if (isOpen) {
+      return <FontAwesomeIcon icon="chevron-up" className="search-input__icon" />;
+    }
+
+    return <FontAwesomeIcon icon="chevron-down" className="search-input__icon" />;
+  }
+
   return (
     <div className={classNames} ref={node}>
       <FormItem label="Manager">
@@ -55,6 +64,7 @@ function SearchInput({
           onFocus={handleFocus}
           onBlur={handleBlur}
         />
+        {getIcon()}
       </FormItem>
       {isOpen && createDropdown()}
     </div>

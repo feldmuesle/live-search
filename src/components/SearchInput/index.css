@@ -5,24 +5,36 @@
   padding-bottom: 15px;
 }
 
+.search-input .form-item {
+  position: relative;
+}
 
+.search-input__icon {
+  position: absolute;
+  top: 45px;
+  right: 30px;
+}
 
 .search-input__dropdown {
   max-width: 400px;
-  margin: .5rem 1rem;
+  margin: -.5rem 1rem 0;
   background-color: #fff;
   border-radius: 3px;
 }
 
 .search-input__results {
-  padding-inline-start: unset;
+
   margin: 0 20px;
+  max-height: 152px;
+  overflow-y: scroll;
+  padding-inline-start: unset;
 }
 
 .search-input__result-item {
   display: flex;
   justify-content: flex-start;
   padding: 20px 10px;
+  cursor: pointer;
 
 }
 
