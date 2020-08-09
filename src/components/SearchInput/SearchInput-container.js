@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import SearchInput from './SearchInput';
 import ManagerResult from './templates/manager';
@@ -10,6 +10,7 @@ function SearchInputContainer({ data, getResult }) {
   const [isOpen, setIsOpen] = useState(false);
   const [value, setValue] = useState('');
   const [result, setResult] = useState(data);
+  const node = useRef();
 
   const search = (ev) => {
     const searchTerm = ev.target.value;
@@ -19,7 +20,37 @@ function SearchInputContainer({ data, getResult }) {
     setResult(searchResult);
   };
 
-  const selectResult = () => {};
+  const selectResult = (item) => {
+    const { firstName, lastName } = item;
+    const fullName = `${firstName} ${lastName}`;
+
+    setValue(fullName);
+    toggleDropdown();
+  };
+
+  const handleFocus = (ev) => {
+    // hush Chromes autosuggest feature
+    ev.target.setAttribute('autocomplete', 'off');
+    toggleDropdown();
+  };
+
+  const handleBlur = (ev) => {
+    ev.stopPropagation();
+
+    if (isOpen && !node.current.contains(ev.target)) {
+      toggleDropdown();
+
+      return null;
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleBlur);
+
+    return () => {
+      document.removeEventListener('mousedown', handleBlur);
+    };
+  }, [value]);
 
   function toggleDropdown() {
     setIsOpen(!isOpen);
@@ -31,9 +62,12 @@ function SearchInputContainer({ data, getResult }) {
       value={value}
       isOpen={isOpen}
       toggleDropdown={toggleDropdown}
+      handleFocus={handleFocus}
+      handleBlur={handleBlur}
       search={search}
       selectResult={selectResult}
       resultComponent={ManagerResult}
+      node={node}
     />
   );
 }

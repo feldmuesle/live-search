@@ -11,8 +11,10 @@ function SearchInput({
   data,
   value,
   isOpen,
-  toggleDropdown,
+  handleFocus,
+  handleBlur,
   search,
+  node,
   selectResult,
   resultComponent,
 }) {
@@ -24,12 +26,13 @@ function SearchInput({
       <div className="search-input__dropdown">
         <ul className="search-input__results">
           {data.map((item) => {
+            const { id } = item;
+
             return (
               <li
                 className="search-input__result-item"
-                onClick={selectResult}
-                data-id={item.id}
-                key={item.id}
+                onClick={(ev) => selectResult(item)}
+                key={id}
               >
                 <ResultComponent {...item} />
               </li>
@@ -41,15 +44,16 @@ function SearchInput({
   }
 
   return (
-    <div className={classNames}>
+    <div className={classNames} ref={node}>
       <FormItem label="Manager">
         <Input
+          autoComplete="new-password"
           value={value}
           placeholder="Choose Manager"
           name="managers"
           onChange={search}
-          onFocus={toggleDropdown}
-          onBlur={null}
+          onFocus={handleFocus}
+          onBlur={handleBlur}
         />
       </FormItem>
       {isOpen && createDropdown()}
@@ -69,7 +73,8 @@ SearchInput.propTypes = {
   ).isRequired,
   value: PropTypes.string.isRequired,
   isOpen: PropTypes.bool,
-  toggleDropdown: PropTypes.func.isRequired,
+  handleFocus: PropTypes.func.isRequired,
+  handleBlur: PropTypes.func.isRequired,
   search: PropTypes.func.isRequired,
   selectResult: PropTypes.func.isRequired,
   resultComponent: PropTypes.node.isRequired,
