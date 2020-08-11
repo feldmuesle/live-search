@@ -7,6 +7,6 @@
 }
 
 .input:focus {
-  box-shadow: 0 0 1px 1px #B5E096;
-  border: 1px solid #B5E096;
+  outline: 0;
+  box-shadow: 0 0 1px 1px #0DBC53;
 }

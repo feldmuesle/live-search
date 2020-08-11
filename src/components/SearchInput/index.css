@@ -1,5 +1,5 @@
 .search-input {
-  margin: 0 auto;
+  margin: 20px auto;
   max-width: 400px;
   background-color: #eee;
   padding-bottom: 15px;
@@ -16,6 +16,10 @@
   cursor: pointer;
 }
 
+.search-input__icon--closed {
+  color: #cacaca;
+}
+
 .search-input__dropdown {
   max-width: 400px;
   margin: -.5rem 1rem 0;
@@ -24,8 +28,7 @@
 }
 
 .search-input__results {
-
-  margin: 0 20px;
+  margin: 5px 0;
   max-height: 152px;
   overflow-y: scroll;
   padding-inline-start: unset;
@@ -36,7 +39,10 @@
   justify-content: flex-start;
   padding: 20px 10px;
   cursor: pointer;
+}
 
+.search-input__result-item--selected {
+  background-color: pink;
 }
 
 .search-input__result-item:not(:last-child) {
