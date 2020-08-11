@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import getData from '../../api/get-data';
 import { SearchInput } from '../SearchInput';
 import ManagerResultItem from './result-template/ManagerResultItem';
-import useStringSearch from '../SearchInput/hooks/use-string-search';
+import useStringSearch from '../../hooks/use-string-search';
 
 function ManagerLiveSearch() {
   const apiUrl =

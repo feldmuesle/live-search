@@ -3,7 +3,7 @@ import renderer, { act } from 'react-test-renderer';
 import { render, fireEvent, screen, within } from '@testing-library/react';
 import setupIcons from '../../setup-icons';
 import { SearchInput } from '.';
-import useStringSearch from './hooks/use-string-search';
+import useStringSearch from '../../hooks/use-string-search';
 
 setupIcons();
 
@@ -132,7 +132,7 @@ describe('user interaction', () => {
     });
   });
 
-  describe('user selects item from dropdown', () => {
+  describe('user clicks on item in dropdown', () => {
     it('calls function for formatting selection', () => {
       const format = jest.fn(() => 'something');
       render(
@@ -193,7 +193,7 @@ describe('user interaction', () => {
       expect(dropdown).toBeFalsy();
     });
 
-    it('keeps the value', () => {
+    it('keeps the current value', () => {
       const format = ({ name }) => `${name} ${name}`;
       render(
         <SearchInput
