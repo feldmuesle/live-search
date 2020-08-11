@@ -52,6 +52,7 @@ function ManagerLiveSearch() {
       <SearchInput
         data={managers}
         getResult={searchString}
+        rowsToDisplay={2}
         formatSelection={formatSelection}
         resultComponent={ManagerResultItem}
       />
