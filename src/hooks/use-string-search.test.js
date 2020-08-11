@@ -76,5 +76,5 @@ describe('useStringSearch', () => {
     searchResult.map((item) => {
       expect(['Pan'].includes(item.last)).toBe(true);
     });
-  })
+  });
 });

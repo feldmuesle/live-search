@@ -18,6 +18,7 @@ const getResult = useStringSearch(['name', 'name']);
 
 const formatSelection = ({ name }) => `${name}`;
 
+// eslint-disable-next-line react/prop-types
 function ResultComponent({ name }) {
   return <div>{name}</div>;
 }
@@ -213,26 +214,6 @@ describe('user interaction', () => {
       input.blur();
 
       expect(input.value).toBe('cat cat');
-    });
-  });
-
-  describe('user clicks outside of search input', () => {
-    xit('closes dropdown', () => {
-      render(
-        <SearchInput
-          data={data}
-          getResult={getResult}
-          resultComponent={ResultComponent}
-          formatSelection={formatSelection}
-        />
-      );
-      const input = screen.getByRole('textbox');
-
-      input.focus();
-      fireEvent.click(document.body);
-
-      const dropdown = screen.queryByRole('list');
-      expect(dropdown).toBeFalsy();
     });
   });
 });

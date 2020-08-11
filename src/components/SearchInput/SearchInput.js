@@ -49,7 +49,12 @@ function SearchInput({
       return <FontAwesomeIcon icon="chevron-up" className="search-input__icon" />;
     }
 
-    return <FontAwesomeIcon icon="chevron-down" className="search-input__icon" />;
+    return (
+      <FontAwesomeIcon
+        icon="chevron-down"
+        className="search-input__icon search-input__icon--closed"
+      />
+    );
   }
 
   return (

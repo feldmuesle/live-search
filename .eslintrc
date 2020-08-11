@@ -18,7 +18,8 @@
     "react/no-array-index-key": 1,
     "react/jsx-props-no-spreading": 0,
     "react/jsx-fragments": [1, "element"],
-    "padding-line-between-statements": ["error", {"blankLine": "always", "prev": "*", "next": "return"}]
-
+    "padding-line-between-statements": ["error", {"blankLine": "always", "prev": "*", "next": "return"}],
+    "array-callback-return": 0,
+    "jsx-a11y/no-noninteractive-element-interactions": 1
   }
 }
