@@ -16,6 +16,7 @@ function SearchInput({
   handleBlur,
   handleChange,
   node,
+  selectedId,
   handleSelect,
   resultComponent,
 }) {
@@ -28,10 +29,12 @@ function SearchInput({
         <ul className="search-input__results">
           {data.map((item) => {
             const { id } = item;
+            const selectClass =
+              selectedId === id ? ' search-input__result-item--selected' : '';
 
             return (
               <li
-                className="search-input__result-item"
+                className={`search-input__result-item${selectClass}`}
                 onMouseDown={() => handleSelect(item)}
                 key={id}
               >
@@ -79,6 +82,7 @@ function SearchInput({
 SearchInput.defaultProps = {
   className: null,
   isOpen: false,
+  selectedId: null,
 };
 
 SearchInput.propTypes = {
@@ -95,6 +99,7 @@ SearchInput.propTypes = {
     PropTypes.func,
     PropTypes.shape({ current: PropTypes.instanceOf(Element) }),
   ]).isRequired,
+  selectedId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   handleSelect: PropTypes.func.isRequired,
   resultComponent: PropTypes.func.isRequired,
 };

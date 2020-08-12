@@ -42,7 +42,7 @@
 }
 
 .search-input__result-item--selected {
-  background-color: pink;
+  background-color: #fdfdfd;
 }
 
 .search-input__result-item:not(:last-child) {
